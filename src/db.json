@@ -1,0 +1,204 @@
+{
+    "logs": [
+                {
+                    "user": "piotr",
+                    "title": "login success",
+                    "details": "managed to login with correct data",
+                    "event": "login",
+                    "status": "success",
+                    "date": "2018-09-12"
+                },
+                {
+                    "user": "jacek",
+                    "title": "login success",
+                    "details": "managed to login with correct data",
+                    "event": "login",
+                    "status": "success",
+                    "date": "2018-09-01"
+                },
+                {
+                    "user": "piotr",
+                    "title": "login success",
+                    "details": "managed to login with correct data",
+                    "event": "login",
+                    "status": "success",
+                    "date": "2018-09-05"
+                },
+                {
+                    "user": "ela",
+                    "title": "change username",
+                    "details": "managed to change username of account",
+                    "event": "change",
+                    "status": "success",
+                    "date": "2018-09-04"
+                },
+                {
+                    "user": "wojtek",
+                    "title": "login failure",
+                    "details": "could not login with incorrect data",
+                    "event": "login",
+                    "status": "fail",
+                    "date": "2018-09-12"
+                },
+                {
+                    "user": "jan",
+                    "title": "change password",
+                    "details": "did not type correct old password to change",
+                    "event": "change",
+                    "status": "fail",
+                    "date": "2018-09-10"
+                },
+                {
+                    "user": "piotr",
+                    "title": "sent link",
+                    "details": "sent link to reset password",
+                    "event": "sent",
+                    "status": "success",
+                    "date": "2018-09-12"
+                },
+                {
+                    "user": "kasia",
+                    "title": "display her avatar",
+                    "details": "displayed her avatar",
+                    "event": "display",
+                    "status": "info",
+                    "date": "2018-09-11"
+                },
+                {
+                    "user": "ela",
+                    "title": "connection failure",
+                    "details": "could not set secure connection with server",
+                    "event": "connection",
+                    "status": "fatal",
+                    "date": "2018-09-12"
+                },
+                {
+                    "user": "jan",
+                    "title": "updated description",
+                    "details": "updated description in profile settings",
+                    "event": "update",
+                    "status": "success",
+                    "date": "2018-09-04"
+                },
+                {
+                    "user": "kasia",
+                    "title": "added product ",
+                    "details": "managed to add product to her sale offers",
+                    "event": "add",
+                    "status": "success",
+                    "date": "2018-09-11"
+                },
+                {
+                    "user": "karolina",
+                    "title": "remove product",
+                    "details": "managed to remove product from her offers",
+                    "event": "remove",
+                    "status": "success",
+                    "date": "2018-09-12"
+                },
+                {
+                    "user": "ania",
+                    "title": "changed quanity",
+                    "details": "managed to change quanity of pair shoes",
+                    "event": "change",
+                    "status": "success",
+                    "date": "2018-09-10"
+                },
+                {
+                    "user": "tomasz",
+                    "title": "added product failure",
+                    "details": "could not add product to sale",
+                    "event": "add",
+                    "status": "fail",
+                    "date": "2018-09-07"
+                },
+                {
+                    "user": "justyna",
+                    "title": "changed quanity failure",
+                    "details": "could not change quanity of product",
+                    "event": "change",
+                    "status": "fail",
+                    "date": "2018-09-08"
+                },
+                {
+                    "user": "tomasz",
+                    "title": "added product image failure",
+                    "details": "loaded wrong image type",
+                    "event": "add",
+                    "status": "fail",
+                    "date": "2018-09-10"
+                },
+                {
+                    "user": "patryk",
+                    "title": "repaired system errors",
+                    "details": "managed to fix system recent bugs",
+                    "event": "repair",
+                    "status": "success",
+                    "date": "2018-09-12"
+                },
+                {
+                    "user": "lukasz",
+                    "title": "checked status of offer",
+                    "details": "checked status of product in offer",
+                    "event": "check",
+                    "status": "info",
+                    "date": "2018-09-06"
+                },
+                {
+                    "user": "ola",
+                    "title": "infected database by virus",
+                    "details": "injected javascript malicious code",
+                    "event": "inject",
+                    "status": "fatal",
+                    "date": "2018-09-03"
+                },
+                {
+                    "user": "pawel",
+                    "title": "checked products in basket",
+                    "details": "checked added products to buy in basket",
+                    "event": "check",
+                    "status": "info",
+                    "date": "2018-09-12"
+                },
+                {
+                    "user": "milosz",
+                    "title": "implemented new interface of system",
+                    "details": "managed to improve interface of system",
+                    "event": "implementation",
+                    "status": "success",
+                    "date": "2018-09-02"
+                },
+                {
+                    "user": "wojtek",
+                    "title": "break tests in application",
+                    "details": "changed functionality in application caused break in tests",
+                    "event": "break",
+                    "status": "fatal",
+                    "date": "2018-09-05"
+                },
+                {
+                    "user": "kamil",
+                    "title": "checked status of his account",
+                    "details": "managed to check status of his account",
+                    "event": "check",
+                    "status": "info",
+                    "date": "2018-09-09"
+                },
+                {
+                    "user": "julia",
+                    "title": "success login",
+                    "details": "managed to login with correct data",
+                    "event": "login",
+                    "status": "success",
+                    "date": "2018-09-12"
+                },
+                {
+                    "user": "michal",
+                    "title": "blocked his account for 15 minutes",
+                    "details": "blocked his account for 15 minutes due to five wrong attemtps to introduce correct data",
+                    "event": "block",
+                    "status": "fail",
+                    "date": "2018-09-04"
+                }
+    ]
+}
