@@ -1,12 +1,15 @@
-const ListItem = ({user, title, description, date}) => {
+import styles from './ListItem.css';
+import CssModules from 'react-css-modules';
+
+export const ListItem = ({user, title, description, date}) => {
     return (
-        <li>
-            <h3>{user}</h3>
-            <span>{title}</span>
-            <p>{description}</p>
-            <time>{date}</time>
+        <li styleName='listItem'>
+            <span styleName='user'>{user}</span>
+            <span styleName='title'>{title}</span>
+            <p styleName='desc'>{description}</p>
+            <time styleName='date'>{date}</time>
         </li>
     );
 };
 
-export default ListItem;
+export default CssModules(ListItem,styles);

@@ -1,0 +1,23 @@
+.listItem {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.user {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.desc {
+    font-size: 10px;
+}
+
+.date {
+    font-size: 10px;
+}

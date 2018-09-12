@@ -1,4 +1,5 @@
 .logsList {
     display: flex;
     list-style-type: none;
+    flex-direction: column;
 }
