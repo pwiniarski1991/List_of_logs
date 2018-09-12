@@ -14,7 +14,17 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [ 'style-loader', 'css-loader']
+                use: [ 
+                    'style-loader',
+                    {
+                        loader: require.resolve('css-loader'),
+                        options: {
+                          importLoaders: 1,
+                          modules: true,
+                          localIdentName: "[name]__[local]___[hash:base64:5]"  
+                        }
+                    },
+                ]
             }
         ]
     },
@@ -30,5 +40,7 @@ module.exports = {
         publicPath: 'http://localhost:3000/dist/',
         hotOnly: true
     },
-    plugins: [ new webpack.HotModuleReplacementPlugin() ]
+    plugins: [ 
+        new webpack.HotModuleReplacementPlugin()
+    ]
 };
