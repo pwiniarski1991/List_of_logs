@@ -27,7 +27,6 @@ export class List extends React.Component {
 
     render() {
         console.log(this.state.logs);
-        console.log('styles', styles);
 
         if(!this.state.logs.length) {
             return null;
@@ -35,8 +34,15 @@ export class List extends React.Component {
 
         return (
             <ul styleName='logsList'>
-                {this.state.logs.map(log => {
-                    return <ListItem key={log.title+log.date} user={log.user} title={log.title} description={log.details} date={log.date} />
+                {this.state.logs.map((log,i) => {
+                    if(i<15) {
+                        return (<ListItem key={log.title+log.date+i} 
+                                          status={log.status}
+                                          title={log.title}
+                                          description={log.details}
+                                          date={log.date} 
+                                />);
+                    }
                 })}
             </ul>
         );

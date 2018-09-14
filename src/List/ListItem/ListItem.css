@@ -1,21 +1,43 @@
 .listItem {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    text-align: left;
+    border-bottom: 1px solid black;
 }
 
-.user {
-    font-size: 14px;
-    font-weight: bold;
+.listItemEl {
+    text-align: left;
+    font-size: 12px;
+}
+
+.communicate_success {
+    color: green;
+    font-size: 16px;
+}
+
+.communicate_info {
+    color: blue;
+    font-size: 16px;
+}
+
+.communicate_fail {
+    color: red;
+    font-size: 16px;
+}
+
+.communicate_fatal {
+    color: red;
+    font-size: 16px;
 }
 
 .title {
-    font-size: 12px;
+    font-size: 20px;
     font-style: italic;
 }
 
 .desc {
-    font-size: 10px;
+    font-size: 14px;
 }
 
 .date {
