@@ -1,16 +1,19 @@
-function isCurrentDateNewer(old, current, rev) {
-    const isNewer = rev
-    ? Date.parse(current) > Date.parse(old)
-    : Date.parse(current) < Date.parse(old)
+function isCurrentDateNewer(old, current, isDesc=true) {
+    let isNewer = isDesc 
+    ? Date.parse(current) < Date.parse(old)
+    : Date.parse(current) > Date.parse(old); 
     return isNewer;
 }
 
-export const sortItems = (data, field, reverse=false, compare = null) => {
+export const sortItems = (data, field, sortOrder, compare = null) => {
     let i =1,x,j;
+    if(!field) {
+        return data;
+    }
     while(i < data.length) {
         x=data[i];
         j=i-1;
-        while( j >= 0 && isCurrentDateNewer(x[field], data[j][field], reverse)) {
+        while( j >= 0 && isCurrentDateNewer(x[field], data[j][field], sortOrder)) {
             data[j+1] = data[j];
             j=j-1;
         }

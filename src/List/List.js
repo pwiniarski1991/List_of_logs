@@ -2,7 +2,7 @@ import React from 'react';
 import ListItem from './ListItem/ListItem';
 import styles from './List.css';
 import CssModules from 'react-css-modules';
-import Loader from 'react-loader-spinner'
+import Loader from 'react-loader-spinner';
 
 export class List extends React.Component {
 

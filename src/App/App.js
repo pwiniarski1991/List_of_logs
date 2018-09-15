@@ -5,15 +5,16 @@ import List from './../List/List';
 import Filter from './../components/Filter/Filter';
 import {getLogs, sortItems} from './../utils/Helpers';
 import {api} from './../config/constants';
+import CssModules from 'react-css-modules';
 
-export default class App extends react.Component {
+export class App extends react.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             initialLogs: [],
             logs: [],
-            sortedType: 'desc'
+            isDesc: true
         };
 
         this.setFilteredLogs = this.setFilteredLogs.bind(this);
@@ -23,10 +24,9 @@ export default class App extends react.Component {
     componentDidMount() {
         getLogs(api.url)
         .then(data => {
-            this.setState({initialLogs: data, logs: sortItems(data, 'date', false)});
+            this.setState({initialLogs: sortItems(data, 'date'), logs: sortItems(data, 'date')});
             return data;
         });
-
     }
 
     filterLogs(filterInput, logs) {
@@ -43,19 +43,19 @@ export default class App extends react.Component {
     }
 
     setFilteredLogs(filteredLogs) {
-        this.setState({logs: filteredLogs });
+        const {isDesc} = this.state;
+        this.setState({logs: sortItems(filteredLogs,'date',isDesc)});
     }
 
     handleChange(event) {
-        const {initialLogs} = this.state;
-        const rev = event.target.value === 'asc' ? true : false;   
-        const sortedLogs = initialLogs.length ? sortItems(initialLogs, 'date',rev) : [];
-        this.setState({initialLogs: sortedLogs});
-        console.log('sortedLogs: ',sortedLogs);
+        const {logs} = this.state;
+        const isDesc = event.target.value === 'desc' ? true : false;
+        const sortedLogs = logs.length ? sortItems(logs, 'date',isDesc) : [];
+        this.setState({logs: sortedLogs, isDesc});
     }
 
     render() {
-        const {initialLogs, logs} = this.state;
+        const {initialLogs, logs, sortOrder} = this.state;
 
         return (
             <React.Fragment>
@@ -66,7 +66,7 @@ export default class App extends react.Component {
                     onFilter={this.setFilteredLogs}
                 />
                 <div>
-                    <select value={this.state.value} onChange={this.handleChange}>
+                    <select value={sortOrder} onChange={this.handleChange}>
                         <option key='desc' value='desc'>descending</option>
                         <option key='asc' value='asc'>ascending</option>
                     </select>
@@ -77,3 +77,5 @@ export default class App extends react.Component {
     }
 
 }
+
+export default CssModules(App,styles);
