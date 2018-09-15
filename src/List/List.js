@@ -2,39 +2,27 @@ import React from 'react';
 import ListItem from './ListItem/ListItem';
 import styles from './List.css';
 import CssModules from 'react-css-modules';
+import Loader from 'react-loader-spinner'
 
 export class List extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            logs: []
-        };
-    }
-
-    componentDidMount() {
-        this.getLogs()
-        .then(data => {
-            this.setState({logs: data});
-            return data;
-        });
-    }
-
-    getLogs() {
-        return fetch('http://my-json-server.typicode.com/pwiniarski1991/List_of_logs/logs')
-        .then(response => response.json());
     }
 
     render() {
-        console.log(this.state.logs);
 
-        if(!this.state.logs.length) {
-            return null;
+        const {logs} = this.props;
+
+        if(!logs.length) {
+            return(
+                <Loader type="TailSpin" color="green" height={80} width={80} />
+            )
         } 
 
         return (
             <ul styleName='logsList'>
-                {this.state.logs.map((log,i) => {
+                {logs.map((log,i) => {
                     if(i<15) {
                         return (<ListItem key={log.title+log.date+i} 
                                           status={log.status}

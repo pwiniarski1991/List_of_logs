@@ -4,11 +4,13 @@
     align-items: center;
     text-align: left;
     border-bottom: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .listItemEl {
-    text-align: left;
-    font-size: 12px;
+    text-align: center;
+    font-size: 14px;
+    width: 25%;
 }
 
 .communicate_success {
@@ -32,14 +34,13 @@
 }
 
 .title {
-    font-size: 20px;
-    font-style: italic;
+    font-size: inherit;
 }
 
 .desc {
-    font-size: 14px;
+    font-size: inherit;;
 }
 
 .date {
-    font-size: 10px;
+    font-size: inherit;
 }
