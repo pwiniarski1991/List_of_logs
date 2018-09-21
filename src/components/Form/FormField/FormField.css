@@ -1,0 +1,9 @@
+.formField {
+    flex-direction: row;
+    margin: 10px 0;
+}
+
+.formError {
+    text-align: right;
+    color: red;
+}

@@ -1,0 +1,42 @@
+.modal, .modalHeader, .modalContent {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-items: center;
+    background-color: #BBCCDD;
+}
+
+.modal {
+    flex-direction: column;
+    overflow: hidden;
+    width: 400px;
+    height: 300px;
+    top: 25%;
+    left: 20%;
+}
+
+.modalHeader {
+    position: relative;
+    height: 50px;
+    flex-direction: row;
+}
+
+.modalContent {
+    position: relative;
+    height: 200px;
+    flex-direction: row;
+}
+
+.closed {
+    display: none;
+}
+
+.closeModal {
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+    border: none;
+    padding: 10px;
+    background-color: blue;
+}
