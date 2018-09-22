@@ -3,27 +3,30 @@
     position: absolute;
     align-items: center;
     justify-items: center;
-    background-color: #BBCCDD;
+    width: 100%;
 }
 
 .modal {
     flex-direction: column;
-    overflow: hidden;
-    width: 400px;
-    height: 300px;
+    width: 460px;
+    height: 400px;
     top: 25%;
     left: 20%;
+    background-color: #272d33;
+    color: white;
+    padding-bottom: 10px;
 }
 
 .modalHeader {
     position: relative;
     height: 50px;
     flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
 }
 
 .modalContent {
     position: relative;
-    height: 200px;
     flex-direction: row;
 }
 
@@ -32,11 +35,12 @@
 }
 
 .closeModal {
-    display: block;
-    margin: 0 auto;
-    width: 20px;
-    height: 20px;
+    display: flex;
+    width: 30px;
+    height: 30px;
     border: none;
-    padding: 10px;
-    background-color: blue;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: #404d58;
+    color: white;
 }

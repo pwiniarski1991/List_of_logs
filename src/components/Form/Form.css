@@ -1,9 +1,47 @@
+.formLogs {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .formGroup, .formField {
     display: flex;
     align-items: center;
     justify-items: center;
+    width: 80%;
 }
 
 .formGroup {
     flex-direction: column;
+}
+
+.formField {
+    flex-direction: row;
+    margin: 10px 0;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.formError {
+    text-align: right;
+    color: red;
+}
+
+.error {
+    background-color: red;
+}
+
+.submitButton {
+    border: none;
+    background: white;
+    color: blue;
+    padding: 10px 15px;
+}
+
+.submitButton:disabled {
+    background-color: #909090;
+    color: #5d5b5b;
+    cursor: default;
 }

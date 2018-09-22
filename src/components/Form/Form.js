@@ -2,126 +2,73 @@ import React from 'react';
 import CssModules from 'react-css-modules';
 import styles from './Form.css'
 import FormField from './FormField/FormField';
+import { connect } from 'react-redux';
+import { reduxForm, Field, blur } from 'redux-form';
 
-export class Form extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            Values: {
-                status: '',
-                header: '',
-                desc: '',
-                date: ''
-            },
-            formErrors : {
-                status: [],
-                header: [],
-                desc: [],
-                date: []
-            }
-        };
-
-        this.validateForm = this.validateForm.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.setError = this.setError.bind(this);
-        this.setValue = this.setValue.bind(this);
-        this.renderFormField = this.renderFormField.bind(this);
-    }
-
-    setValue(field,value ) {
-        const { Values } = this.state;
-        Values[field] = value;
-
-        this.setState({
-            Values
-        });
-    }
-
-    setError(field, error) {
-        const { formErrors } = this.state;
-        formErrors[field] = error;
-
-        this.setState({
-            formErrors
-        });
-    }
-
-    validateForm() {
-        const { formErrors, Values } = this.state;
-        let validated = true;
-        Object.keys(Values).forEach(el => {
-            if(Values[el] === '') {
-                formErrors[el].push('empty string');
-                validated = false;
-            }
-            else if(!isNaN(Values[el])) {
-                formErrors[el].push('should not be number');
-                validated = false;
-            }
-            else if(el === 'date') {
-                const dateFormat = new RegExp('[0-9]{4}-[0-9]{2}-[0-9]{2}');
-                validated = dateFormat.test(Values[el]);
-                if(!validated) {
-                    formErrors[el].push('incorrect format of date field');
-                    validated = false;
-                }
-            }
-        });
-
-        return validated;
-    }
-
-    handleSubmit(ev) {
-        ev.preventDefault();
-        const correct = this.validateForm();
-        console.log('correct: ', correct);
-        if(correct) {
-            const log = {
-                status,
-                title: header,
-                details: desc,
-                date
-            };
-            this.props.addLog(log);
+const validate = (values) => {
+    const errors = {};
+    const dateFormat = new RegExp('([1-2]*[0-9]{3})-((1[0-2]{1})|(0[0-9]{1}))-((3[0-1])|([0-2][0-9]))');
+    
+    ['status', 'title', 'details', 'date'].forEach(field => {
+        if(!values[field]) {
+            errors[field] = 'is Required';
+        } else if(field === 'date' && !dateFormat.test(values[field])) {
+            errors[field] = 'incorrect format date. Type like this XXXX-XX-XX';
         }
+    });
 
-        this.setState({
-            formErrors: this.state.formErrors
-        });
+    return errors;
+};
 
-    }
-
-    renderFormField() {
-        const { formErrors } = this.state;
-        const formFields = ['status', 'header', 'desc', 'date'].map(field => {
-            console.log(field);
-            return (<FormField 
-                    key={field}
-                    field={field}
-                    errors={formErrors[field]}
-                    setError={this.setError}
-                    setValue={this.setValue}
-                    />);
-        });
-
-        return formFields;
-    }
-
-    render() {
-
+const renderFields = () => {
+    const formFields = ['status', 'title', 'details', 'date'].map(field => {
+        const type = field!=='date' ? 'text' : 'date'; 
         return (
-            <form onSubmit={this.handleSubmit} >
-                <div styleName='formGroup'>
-                    { this.renderFormField() }            
-                    <button type='submit'>add Log</button>
-                </div>
-            </form>
+            <Field 
+                key={field}
+                name={field}
+                type={type}
+                component={FormField}
+                placeholder={field}
+            />
         );
-    }
+    });
+
+    return formFields;
+};
+
+export const Form = ({pristine, submitting, handleSubmit}) => {
+ 
+    return (
+        <form styleName='formLogs' onSubmit={handleSubmit} 
+        validators={{
+            '': { validate },
+        }} >
+            <div styleName='formGroup'>
+                { renderFields() }           
+                <button styleName='submitButton' type='submit' disabled={pristine || submitting}>add Log</button>
+            </div>
+        </form>
+    );
 }
 
-export default CssModules(Form,styles, {
+const mapStateToProps = (state) => {
+    return {
+        form: state.form
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setValue: (field, value) => dispatch(blur('formLogs',field,value))
+    }
+};
+
+const connectedForm = connect(mapStateToProps, mapDispatchToProps)(CssModules(Form,styles, {
     allowMultiple: true
-});
+}));
+
+export default reduxForm({
+    form: 'formLogs',
+    validate
+})(connectedForm); 

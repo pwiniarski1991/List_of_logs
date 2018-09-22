@@ -27,3 +27,10 @@ export const getLogs = (url) => {
     return fetch(url)
     .then(response => response.json());
 }
+
+export const getCommunicat = (dict, status) => {
+    if(dict[status]) {
+        return React.createElement(dict[status]);
+    }
+    return '';
+}

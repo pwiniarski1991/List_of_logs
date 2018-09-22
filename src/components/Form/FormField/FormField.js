@@ -1,74 +1,45 @@
 import React from 'react';
 import CssModules from 'react-css-modules';
 import styles from './FormField.css'
-import { throws } from 'assert';
 
-export class FormField extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            value: ''
-        };
-
-        this.validate = this.validate.bind(this);
-        this.setFieldValue = this.setFieldValue.bind(this);
-    }
-
-    validate() {
-        const { value } = this.state;
-        let error = ''
-        let validated = true;
-        if(value === '' || !isNaN(el)) {
-            validated = false;
-            error = 'empty string or number typed in';
-        }
-
-        if(value === 'date') {
-            dateFormat = new RegExp('[0-9]{4}-[0-9]{2}-[0-9]{2}');
-            validated = dateFormat.test(el);
-            if(!validated) {
-                 error = 'incorrect format of date field';
-                 validated = false;
-            }
-        }
-        if(error) {
-            this.props.setError(value,error);
-        }
-
-        return validated;
-    }
-
-    setFieldValue(ev) {
-        const { id, value } = ev.target;
-        this.setState({
-            [id]: value,
+const getSelectOptions = (options) => {
+    let selectOptions;
+    selectOptions = options.map((value,i) => {
+            return <option key={i+1} value={value}>{value}</option>
         });
-        this.props.setValue(id,value)
-    }
+    selectOptions = [React.createElement('option',{key: 0}),...selectOptions];
+    return selectOptions;
+}
 
-    render() {
+const renderField = (props) => {
+    const { input, type } = props;
+    const {name, onBlur, onChange} = input;
+    const options = ['success','info','fatal','info'];
+    const elements = {
+        input: React.createElement('input',{id: name, type, name, onBlur, onChange, styleName: 'field'}),
+        select: React.createElement('select',{id: name, onBlur, onChange, styleName: 'field'}, getSelectOptions(options))
+    };
 
-        const { value} = this.state;
-        const { field, errors } = this.props;
-
-        console.log('field: ', field);
-
-        return (
-            <div styleName='formField'>
-                <label htmlFor={field}>{field}: </label>
-                <input id={field} type='text' name={field} value={value} 
-                onChange={this.setFieldValue} onBlur={this.validate} />
-                { errors && Object.entries(errors)
-                .map(([key,value]) =>{
-                    return (<div key={key} styleName='formError'>{ value }</div>);
-                })
-                }
-            </div>
-        );
+    if(name !== 'status') {
+        return elements.input
+    } else {
+        return elements.select;
     }
 }
+
+export const FormField = (props) => {
+    const { name } = props.input;
+    const { touched, error } = props.meta;
+    const customErrorClass = error && touched ? 'error' : '';
+    return (
+        <div styleName={`formField ${customErrorClass}`}>
+            {/* <pre>{ JSON.stringify(meta,0,2) }</pre> */}
+            <label styleName='labelField' htmlFor={name}>{name}: </label>
+            { renderField(props) }
+            { customErrorClass && <span>{ error }</span> }
+        </div>
+    );
+};
 
 export default CssModules(FormField,styles, {
     allowMultiple: true

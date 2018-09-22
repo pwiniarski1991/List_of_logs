@@ -2,7 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: ['babel-polyfill', './src/index.js']
+    },
     mode: 'development',
     module: {
         rules: [
@@ -10,7 +12,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules | browser_components)/,
                 loader: 'babel-loader',
-                options: { presets: ['env'] }
+                options: { presets: ['env'], plugins: ['transform-class-properties'] }
             },
             {
                 test: /\.css$/,

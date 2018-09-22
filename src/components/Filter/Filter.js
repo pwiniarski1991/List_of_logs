@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CssModules from 'react-css-modules';
 import styles from './Filter.css';
+import { getCommunicat } from './../../utils/Helpers';
+import { FaCheck, FaInfo, FaTimes, FaExclamation } from 'react-icons/fa';
 
 export class Filter extends React.Component {
 

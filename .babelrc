@@ -1,3 +1,61 @@
 {
-    "presets": ["env", "react"]
+    "env": {
+      "development": {
+        "presets": [
+                ["env",
+                    {
+            "targets": {
+              "browsers": ["last 2 versions"
+                            ]
+                        },
+            "modules": false,
+            "debug": true
+                    }
+                ],
+          "react"
+            ],
+        "plugins": [
+          "transform-class-properties",
+          "transform-object-rest-spread"
+            ]
+        },
+      "server": {
+        "presets": [
+                ["env",
+                    {
+            "targets": {
+              "browsers": ["last 2 versions"
+                            ]
+                        },
+            "modules": "commonjs"
+                    }
+                ],
+          "react"
+            ],
+        "plugins": [
+          "transform-class-properties",
+          "transform-object-rest-spread"
+            ]
+        },
+      "production": {
+        "presets": [
+                ["env",
+                    {
+            "targets": {
+              "browsers": ["last 2 versions"
+                            ]
+                        },
+            "modules": false,
+            "debug": true
+                    }
+                ],
+          "react",
+          "minify"
+            ],
+        "plugins": [
+          "transform-class-properties",
+          "transform-object-rest-spread"
+            ]
+        }
+    }
 }
