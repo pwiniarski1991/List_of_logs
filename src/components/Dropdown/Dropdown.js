@@ -2,7 +2,8 @@ import React from 'react';
 import CssModules from 'react-css-modules';
 import styles from './Dropdown.css';
 import { getCommunicat } from './../../utils/Helpers';
-import { FaCheck, FaInfo, FaTimes, FaExclamation, FaChevronDown } from 'react-icons/fa';
+import { dict } from './../../config/constants';
+import { FaChevronDown } from 'react-icons/fa';
 
 export class Dropdown extends React.Component {
 
@@ -17,13 +18,19 @@ export class Dropdown extends React.Component {
 
     renderOptions = (options) => {
         return options.map((option,i) => React.createElement('li',
-         { key: option+i, styleName: 'dropDownListItem', onClick: this.selectOption},getCommunicat(option), option));
+         { 
+             key: option+i, 
+             styleName: 'dropDownListItem', 
+             onClick: this.selectOption
+        },getCommunicat(dict,option), option));
     }
 
     selectOption = (ev) => {
         const { innerText } = ev.target;
+        const icon = getCommunicat(dict,innerText);
+        const title = [icon, innerText];
         this.setState({ 
-            title: innerText,
+            title,
             menuOpened: false
         });
         this.props.onChange(ev);

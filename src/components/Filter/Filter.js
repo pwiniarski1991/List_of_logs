@@ -22,8 +22,10 @@ export class Filter extends React.Component {
 
     render() {
 
+        const { customClass } = this.props;
+
         return (
-            <div styleName='filterWrapper'>
+            <div styleName={`filterWrapper ${customClass}`}>
                 <Dropdown placeHolder='filter Communicat' 
                         list={['success','info','fail','fatal']}
                         onChange={this.handleChange} 
@@ -39,4 +41,6 @@ Filter.propTypes = {
     onFilter: PropTypes.func.isRequired
 }
 
-export default CssModules(Filter,styles);
+export default CssModules(Filter,styles,{
+    allowMultiple: true
+});

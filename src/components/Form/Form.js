@@ -2,6 +2,7 @@ import React from 'react';
 import CssModules from 'react-css-modules';
 import styles from './Form.css'
 import FormField from './FormField/FormField';
+import Button from './../Button/Button';
 import { connect } from 'react-redux';
 import { reduxForm, Field, blur } from 'redux-form';
 
@@ -45,8 +46,10 @@ export const Form = ({pristine, submitting, handleSubmit}) => {
             '': { validate },
         }} >
             <div styleName='formGroup'>
-                { renderFields() }           
-                <button styleName='submitButton' type='submit' disabled={pristine || submitting}>add Log</button>
+                { renderFields() }
+                <div styleName='buttonBox'>
+                    <Button text='add Log' disabled={pristine || submitting} />
+                </div>           
             </div>
         </form>
     );

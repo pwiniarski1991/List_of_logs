@@ -12,9 +12,9 @@
     height: 400px;
     top: 25%;
     left: 20%;
-    background-color: #272d33;
-    color: white;
+    background-color: #fafcff;
     padding-bottom: 10px;
+    border: 1px solid #9e9c9c;
 }
 
 .modalHeader {
@@ -41,6 +41,5 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
-    background-color: #404d58;
-    color: white;
+    background-color: #eaeaea;
 }

@@ -30,7 +30,7 @@ export const getLogs = (url) => {
 
 export const getCommunicat = (dict, status) => {
     if(dict[status]) {
-        return React.createElement(dict[status]);
+        return React.createElement(dict[status], { key: {status} });
     }
     return '';
 }

@@ -1,0 +1,14 @@
+.submitButton {
+    border: none;
+    background: #3a3a3a;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 120px;
+}
+
+.submitButton:disabled {
+    background-color: #909090;
+    color: #5d5b5b;
+    cursor: default;
+}
