@@ -17,17 +17,23 @@ export class Dropdown extends React.Component {
     }
 
     renderOptions = (options) => {
-        return options.map((option,i) => React.createElement('li',
-         { 
-             key: option+i, 
-             styleName: 'dropDownListItem', 
-             onClick: this.selectOption
-        },getCommunicat(dict,option), option));
+        return options.map((option,i) => {
+            let icon = '';
+            if(option !== 'asc' && option !== 'desc') {
+                icon = getCommunicat(dict,option, `${option}Item`);
+            }
+            return (
+                React.createElement('li',{ 
+                    key: option+i, 
+                    styleName: 'dropDownListItem', 
+                    onClick: this.selectOption
+                }, icon, option));
+        });
     }
 
     selectOption = (ev) => {
         const { innerText } = ev.target;
-        const icon = getCommunicat(dict,innerText);
+        const icon = getCommunicat(dict,innerText, `${innerText}Item`);
         const title = [icon, innerText];
         this.setState({ 
             title,

@@ -6,11 +6,11 @@ import { dict } from './../../../../config/constants';
 
 export const ListItem = ({title, status, description, date}) => {
 
-    const communicat = getCommunicat(dict, status);
+    const communicat = getCommunicat(dict, status, `communicate_${status} listItemEl`);
 
     return (
         <li styleName='listItem'>
-            <span styleName={`communicate_${status} listItemEl`}>{communicat}</span>
+            { communicat }
             <span styleName='title listItemEl'>{title}</span>
             <p styleName='desc listItemEl'>{description}</p>
             <time styleName='date listItemEl'>{date}</time>

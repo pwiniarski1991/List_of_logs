@@ -28,9 +28,11 @@ export const getLogs = (url) => {
     .then(response => response.json());
 }
 
-export const getCommunicat = (dict, status) => {
+export const getCommunicat = (dict, status,styleName) => {
     if(dict[status]) {
-        return React.createElement(dict[status], { key: {status} });
+        return React.createElement(
+            'span',{ key: status ,'styleName': styleName },React.createElement(dict[status], { key: status })
+        );
     }
     return '';
 }

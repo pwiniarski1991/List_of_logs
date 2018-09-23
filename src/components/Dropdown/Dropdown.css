@@ -50,3 +50,18 @@
 .dropDownList.opened .dropDownListItem:hover {
     background-color: #e6e6ef;
 }
+
+.successItem {
+    color: green;
+    font-size: 16px;
+}
+
+.infoItem {
+    color: blue;
+    font-size: 16px;
+}
+
+.failItem, .fatalItem {
+    color: red;
+    font-size: 16px;
+}

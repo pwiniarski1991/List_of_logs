@@ -6,13 +6,17 @@ import CssModules from 'react-css-modules';
 
 export class App extends react.Component {
 
+    closeDropDown = () => {
+        
+    }
+
     render() {
 
         return (
-            <React.Fragment>
+            <div onClick={this.closeDropDown}>
                 <Header title='List of logs' />
                 <MainView />
-            </React.Fragment>
+            </div>
         );
     }
 
