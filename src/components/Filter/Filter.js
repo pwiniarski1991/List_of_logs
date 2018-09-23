@@ -17,7 +17,7 @@ export class Filter extends React.Component {
         const {filterFunction, onFilter, initialItems} = this.props;
         const val = event.target.innerText;
         const filteredItems = filterFunction(val, initialItems);
-        onFilter(filteredItems);
+        onFilter(filteredItems, event);
     }
 
     render() {
@@ -26,7 +26,9 @@ export class Filter extends React.Component {
 
         return (
             <div styleName={`filterWrapper ${customClass}`}>
-                <Dropdown placeHolder='filter Communicat' 
+                <Dropdown 
+                        id='filter'
+                        placeHolder='filter Communicat' 
                         list={['success','info','fail','fatal']}
                         onChange={this.handleChange} 
                 />

@@ -2,7 +2,9 @@ const types = {
     SET_INITIAL_LOGS: 'SET_INITIAL_LOGS',
     SET_LOGS: 'SET_LOGS',
     ADD_LOG: 'ADD_LOG',
-    SET_ORDER: 'SET_ORDER'
+    SET_ORDER: 'SET_ORDER',
+    SET_FILTER_INPUT: 'SET_FILTER_INPUT',
+    SET_DROPDOWN_OPENED: 'SET_DROPDOWN_OPENED' 
 };
 
 export default types;

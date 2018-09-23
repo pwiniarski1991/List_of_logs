@@ -24,9 +24,10 @@ export class Header extends React.Component {
         return filterInput ? filteredLogs : logs;
     }
     
-    setFilteredLogs = (filteredLogs) => {
+    setFilteredLogs = (filteredLogs,ev) => {
         const { isDesc } = this.props;
         this.props.setLogs(sortItems(filteredLogs,'date',isDesc));
+        this.props.setFilterInput(ev.target.innerText);
     }
     
     handleChange = (ev) => {
@@ -51,21 +52,22 @@ export class Header extends React.Component {
 
         return (
             <React.Fragment>
-            <h1>{title}</h1>
-            <div styleName='headerPanel'>
-            <Filter
-                customClass='right_space' 
-                initialItems={initialLogs}
-                filterFunction={this.filterLogs}
-                onFilter={this.setFilteredLogs}
-            />
-            <Dropdown 
-                placeHolder='sort Order' 
-                list={['desc', 'asc']} 
-                onChange={this.handleChange} 
-            />
-            </div>
-        </React.Fragment>
+                <h1>{title}</h1>
+                <div styleName='headerPanel'>
+                <Filter
+                    customClass='right_space' 
+                    initialItems={initialLogs}
+                    filterFunction={this.filterLogs}
+                    onFilter={this.setFilteredLogs}
+                />
+                <Dropdown
+                    id='sort' 
+                    placeHolder='sort Order' 
+                    list={['desc', 'asc']} 
+                    onChange={this.handleChange} 
+                />
+                </div>
+            </React.Fragment>
         );
     }
 }
@@ -82,7 +84,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setInitialLogs: (logs) => dispatch(makeAction(types.SET_INITIAL_LOGS,logs)),
         setLogs: (logs) => dispatch(makeAction(types.SET_LOGS,logs)),
-        setOrder: (order) => dispatch(makeAction(types.SET_ORDER,order))
+        setOrder: (order) => dispatch(makeAction(types.SET_ORDER,order)),
+        setFilterInput: (filter) => dispatch(makeAction(types.SET_FILTER_INPUT,filter))
     }
 }
 

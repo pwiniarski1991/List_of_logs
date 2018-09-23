@@ -29,3 +29,26 @@ export const setOrder = (state = true,action) => {
         return state;   
     }
 }
+
+export const setFilterInput = (state = '',action) => {
+    if(action.type === types.SET_FILTER_INPUT) {
+        return action.payload;
+    } else {
+        return state;   
+    }
+}
+
+export const setDropDownOpened = (state = {}, action) => {
+    if(action.type === types.SET_DROPDOWN_OPENED) {
+        const id = action.payload.id;
+        const obj = {...state,
+        id: action.payload.opened
+        };
+        return {
+            ...state,
+            [id]: action.payload.opened
+        };
+    } else {
+        return state;
+    }
+}

@@ -43,7 +43,6 @@ export class MainView extends react.Component {
 
     render() {
         const { isModalShown } = this.state;
-        const { logs } = this.props;
 
         return (
             <React.Fragment >
@@ -51,7 +50,7 @@ export class MainView extends react.Component {
                 <Modal handleClose={this.closeModal} show={isModalShown}>
                     <Form onSubmit={this.addLog} />
                 </Modal>
-                <List logs={logs} />
+                <List />
             </React.Fragment>
         );
     }
