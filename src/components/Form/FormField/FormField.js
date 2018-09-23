@@ -14,7 +14,7 @@ const getSelectOptions = (options) => {
 const renderField = (props) => {
     const { input, type } = props;
     const {name, onBlur, onChange} = input;
-    const options = ['success','info','fatal','info'];
+    const options = ['success','info','fail','fatal'];
     const elements = {
         input: React.createElement('input',{id: name, type, name, onBlur, onChange, styleName: 'field'}),
         select: React.createElement('select',{id: name, onBlur, onChange, styleName: 'field'}, getSelectOptions(options))

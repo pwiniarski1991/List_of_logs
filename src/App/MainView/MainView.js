@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import showResults from './../../utils/FormHelper';
 import types from './../../reducers/types';
 import makeAction from './../../config/reducerAction';
+import Dropdown from '../../components/Dropdown/Dropdown';
 
 export class MainView extends react.Component {
 
@@ -48,14 +49,15 @@ export class MainView extends react.Component {
     }
 
     setFilteredLogs(filteredLogs) {
-        const {isDesc} = this.props;
+        const { isDesc } = this.props;
         this.props.setLogs(sortItems(filteredLogs,'date',isDesc));
     }
 
-    handleChange(event) {
-        const { logs, isDesc} = this.props;
-        const sortedLogs = logs.length ? sortItems(logs, 'date',!isDesc) : [];
-        this.props.setOrder(!isDesc);
+    handleChange(ev) {
+        const isDesc = ev.target.innerText === 'desc' ? true : false
+        const { logs } = this.props;
+        const sortedLogs = logs.length ? sortItems(logs, 'date',isDesc) : [];
+        this.props.setOrder(isDesc);
         this.props.setLogs(sortedLogs);
     }
 
@@ -79,9 +81,7 @@ export class MainView extends react.Component {
 
     render() {
         const { isModalShown } = this.state;
-        const { initialLogs, logs, isDesc } = this.props;
-
-        const sortOrder = isDesc ? 'desc' : 'asc';
+        const { initialLogs, logs } = this.props;
 
         return (
             <React.Fragment >
@@ -94,12 +94,7 @@ export class MainView extends react.Component {
                     filterFunction={this.filterLogs}
                     onFilter={this.setFilteredLogs}
                 />
-                <div>
-                    <select value={sortOrder} onChange={this.handleChange}>
-                        <option key='desc' value='desc'>descending</option>
-                        <option key='asc' value='asc'>ascending</option>
-                    </select>
-                </div>
+                <Dropdown placeHolder='sort Order' list={['desc', 'asc']} onChange={this.handleChange} />
                 <List logs={logs} />
             </React.Fragment>
         );
