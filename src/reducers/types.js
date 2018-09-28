@@ -1,4 +1,5 @@
 const types = {
+    FETCH_LOGS: 'FETCH_LOGS',
     SET_INITIAL_LOGS: 'SET_INITIAL_LOGS',
     SET_LOGS: 'SET_LOGS',
     ADD_LOG: 'ADD_LOG',

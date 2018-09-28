@@ -39,11 +39,12 @@ export class Header extends React.Component {
     }
 
     componentDidMount() {
-        getLogs(api.url)
-        .then(data => {
-            this.props.setInitialLogs(sortItems(data, 'date'));
-            this.props.setLogs(sortItems(data, 'date'));
-        });
+        this.props.fetchLogs();
+        // getLogs(api.url)
+        // .then(data => {
+        //     this.props.setInitialLogs(sortItems(data, 'date'));
+        //     this.props.setLogs(sortItems(data, 'date'));
+        // });
     }
 
     render() {
@@ -82,8 +83,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setInitialLogs: (logs) => dispatch(makeAction(types.SET_INITIAL_LOGS,logs)),
-        setLogs: (logs) => dispatch(makeAction(types.SET_LOGS,logs)),
+        fetchLogs: () => dispatch(makeAction(types.FETCH_LOGS)),
+        //setInitialLogs: (logs) => dispatch(makeAction(types.SET_INITIAL_LOGS,logs)),
+        //setLogs: (logs) => dispatch(makeAction(types.SET_LOGS,logs)),
         setOrder: (order) => dispatch(makeAction(types.SET_ORDER,order)),
         setFilterInput: (filter) => dispatch(makeAction(types.SET_FILTER_INPUT,filter))
     }
